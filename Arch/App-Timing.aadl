@@ -1,0 +1,22 @@
+package AppTiming
+public 
+annex EMV2 {**
+
+	error types
+
+	-- Ignore EarlyDelivery, since the network never holds messages 
+	PhysioParamLate : type extends ErrorLibrary::LateDelivery;
+	ControlActionLate : type extends ErrorLibrary::LateDelivery;
+	PhysioParamFlood : type extends ErrorLibrary::HighRate;
+	ControlActionFlood : type extends ErrorLibrary::HighRate;
+	-- Ignore LowRate, since it's just an accumulation of delayed messages
+	-- Ignore RateJitter, since it's either EarlyDelivery (which we don't have) or LateDelivery
+	MissedPhysioParamDeadline : type extends ErrorLibrary::DelayedService;
+	MissedControlActionDeadline : type extends ErrorLibrary::DelayedService;
+	-- Ignore EarlyService since it's impossible
+
+	end types;
+
+**};
+
+end AppTiming;
