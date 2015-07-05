@@ -1,0 +1,30 @@
+package AppService
+public 
+annex EMV2 {**
+
+	error types
+
+	PhysioParamOmission : type extends ErrorLibrary::ItemOmission;
+	ControlActionOmission : type extends ErrorLibrary::ItemOmission;
+	PhysioParamServiceDrop : type extends ErrorLibrary::ServiceOmission;
+	ControlActionServiceDrop : type extends ErrorLibrary::ServiceOmission;
+	PhysioParamServiceFlaky : type extends ErrorLibrary::TransientServiceOmission;
+	ControlActionServiceFlaky : type extends ErrorLibrary::TransientServiceOmission;
+	-- Ignore LateServiceStart, all services are running when apps launch
+	-- Ignore EarlyServiceTermination, apps don't terminate services
+	PhysioParamBoundedOmission : type extends ErrorLibrary::BoundedOmissionInterval;
+	ControlActionBoundedOmission : type extends ErrorLibrary::BoundedOmissionInterval;
+
+	PhysioParamCommission : type extends ErrorLibrary::ItemCommission;
+	ControlActionCommission : type extends ErrorLibrary::ItemCommission;
+	-- Ignore ServiceCommission because it seems illogical and has no semantics in the standard
+	PhysioParamEarlyStart : type extends ErrorLibrary::EarlyServiceStart;
+	ControlActionEarlyStart : type extends ErrorLibrary::EarlyServiceStart;
+	PhysioParamLateStop : type extends ErrorLibrary::LateServiceTermination;
+	ControlActionLateStop : type extends ErrorLibrary::LateServiceTermination;
+
+	end types;
+
+**};
+
+end AppService;

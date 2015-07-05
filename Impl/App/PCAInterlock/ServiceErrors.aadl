@@ -1,0 +1,36 @@
+package PCAInterlockService
+public 
+annex EMV2 {**
+
+	error types
+
+	SpO2Omission : type extends AppService::PhysioParamOmission;
+	EtCO2Omission : type extends AppService::PhysioParamOmission;
+	RROmission : type extends AppService::PhysioParamOmission;
+	PumpShutoffOmission : type extends AppService::ControlActionOmission;
+	
+	SpO2Unavailable : type extends AppService::PhysioParamServiceDrop;
+	EtCO2Unavailable : type extends AppService::PhysioParamServiceDrop;
+	RRUnavailable : type extends AppService::PhysioParamServiceDrop;
+	PumpControlUnavailable : type extends AppService::ControlActionServiceDrop;
+	
+	SpO2Flaky : type extends AppService::PhysioParamServiceFlaky;
+	EtCO2Flaky : type extends AppService::PhysioParamServiceFlaky;
+	RRFlaky : type extends AppService::PhysioParamServiceFlaky;
+	PumpControlFlaky : type extends AppService::ControlActionServiceFlaky;
+	
+	-- Ignore BoundedOmission errors since we don't use an averaging algorithm
+
+	-- Ignore PhysioParamCommission since they're not harmful (and timing 
+	--	 errors are considered elsewhere)
+	SpontaneousPumpShutoffCmd : type extends AppService::ControlActionCommission;
+	-- Ignore early starts since service start isn't handled by our app / we
+	--   don't need historical data
+	-- Ignore late stops since services continuing after our app ends isn't
+	--   unsafe (and our app doesn't control services)
+
+	end types;
+
+**};
+
+end PCAInterlockService;

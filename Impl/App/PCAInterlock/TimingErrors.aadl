@@ -1,0 +1,22 @@
+package AppPCAInterlockTiming
+public 
+annex EMV2 {**
+
+	error types
+	
+	SpO2Late : type extends AppTiming::PhysioParamLate;
+	EtCO2Late : type extends AppTiming::PhysioParamLate;
+	RRLate : type extends AppTiming::PhysioParamLate;
+	PumpShutoffLate : type extends AppTiming::ControlActionLate;
+	SpO2Flood : type extends AppTiming::PhysioParamFlood;
+	EtCO2Flood : type extends AppTiming::PhysioParamFlood;
+	RRFlood : type extends AppTiming::PhysioParamFlood;
+	PumpShutoffFlood : type extends AppTiming::ControlActionFlood;
+	-- Ignore MissedPhysioParamDeadline because we are just a subscriber
+	-- Ignore MissedControlActionDeadline because we are just a publisher
+
+	end types;
+
+**};
+
+end AppPCAInterlockTiming;
