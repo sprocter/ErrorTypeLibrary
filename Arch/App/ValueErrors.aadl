@@ -1,0 +1,30 @@
+package AppValue
+public 
+annex EMV2 {**
+
+	error types
+
+	PhysioParamUndetectablyWrong : type extends ErrorLibrary::UndetectableValueError;
+	ControlActionUndetectablyWrong : type extends ErrorLibrary::UndetectableValueError;
+	PhysioParamOutOfRangeLow : type extends ErrorLibrary::BelowRange;
+	ControlActionOutOfRangeLow : type extends ErrorLibrary::BelowRange;
+	PhysioParamOutOfRangeHigh : type extends ErrorLibrary::AboveRange;
+	ControlActionOutOfRangeHigh : type extends ErrorLibrary::AboveRange;
+	PhysioParamOutOfBounds : type extends ErrorLibrary::OutOfBounds;
+	ControlActionOutOfBounds : type extends ErrorLibrary::OutOfBounds;
+
+	PhysioParamBoundedValueChange : type extends ErrorLibrary::BoundedValueChange;
+	ControlActionBoundedValueChange : type extends ErrorLibrary::BoundedValueChange;
+	PhysioParamStuckValue : type extends ErrorLibrary::StuckValue;
+	ControlActionStuckValue : type extends ErrorLibrary::StuckValue;
+	PhysioParamsOutOfOrder : type extends ErrorLibrary::OutOfOrder;
+	ControlActionsOutOfOrder : type extends ErrorLibrary::OutOfOrder;
+	
+	PhysioParamOutOfCalibration : type extends ErrorLibrary::OutOfCalibration;
+	ControlActionOutOfCalibration : type extends ErrorLibrary::OutOfCalibration;
+		
+	end types;
+
+**};
+
+end AppValue;

@@ -1,0 +1,44 @@
+package AppPCAInterlockValue
+public 
+annex EMV2 {**
+
+	error types
+	
+	SpO2UndetectiblyWrong : type extends AppValue::PhysioParamUndetectablyWrong;
+	EtCO2UndetectiblyWrong : type extends AppValue::PhysioParamUndetectablyWrong;
+	RRUndetectiblyWrong : type extends AppValue::PhysioParamUndetectablyWrong;
+	PumpShutoffUndetectiblyWrong : type extends AppValue::ControlActionUndetectablyWrong;
+	SpO2TooLow : type extends AppValue::PhysioParamOutOfRangeLow;
+	EtCO2TooLow : type extends AppValue::PhysioParamOutOfRangeLow;
+	RRTooLow : type extends AppValue::PhysioParamOutOfRangeLow;
+	-- Ignore ControlActionOutOfRangeLow, pump shutoff isn't ranged
+	SpO2TooHigh : type extends AppValue::PhysioParamOutOfRangeHigh;
+	EtCO2TooHigh : type extends AppValue::PhysioParamOutOfRangeHigh;
+	RRTooHigh : type extends AppValue::PhysioParamOutOfRangeHigh;
+	-- Ignore ControlActionOutOfRangeHigh, pump shutoff isn't ranged
+	SpO2OutOfBounds : type extends AppValue::PhysioParamOutOfBounds;
+	EtCO2OutOfBounds : type extends AppValue::PhysioParamOutOfBounds;
+	RROutOfBounds : type extends AppValue::PhysioParamOutOfBounds;
+	PumpShutoffOutOfBounds : type extends AppValue::ControlActionOutOfBounds;
+	
+	-- Ignore BoundedValueChanges -- neither our physiological parameters nor
+	--   the pump shutoff use historical data to determine validity
+	SpO2ValueStuck : type extends AppValue::PhysioParamStuckValue;
+	EtCO2ValueStuck : type extends AppValue::PhysioParamStuckValue;
+	RRValueStuck : type extends AppValue::PhysioParamStuckValue;
+	PumpCmdStuckOn : type extends AppValue::ControlActionStuckValue;
+	PumpCmdStuckOff : type extends AppValue::ControlActionStuckValue;
+	-- Ignore OutOfOrder errors -- neither our physiological parameters nor
+	--   the pump shutoff have ordering requirements
+	
+	SpO2Miscalibrated : type extends AppValue::PhysioParamOutOfCalibration;
+	EtCO2Miscalibrated : type extends AppValue::PhysioParamOutOfCalibration;
+	RRMiscalibrated : type extends AppValue::PhysioParamOutOfCalibration;
+	-- Ignore ControlActionOutOfCalibration, we our pump commands don't require
+	--   calibration	
+	
+	end types;
+
+**};
+
+end AppPCAInterlockValue;
