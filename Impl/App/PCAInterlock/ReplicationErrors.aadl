@@ -1,0 +1,15 @@
+package PCAInterlockReplication
+public 
+annex EMV2 {**
+
+	error types
+
+	-- The app doesn't experience replication errors, ie, all errors that would
+	--   come about because of a mismatch in values would come about because of
+	--   the value that is incorrect, not the mismatch itself.
+	
+	end types;
+
+**};
+
+end PCAInterlockReplication;

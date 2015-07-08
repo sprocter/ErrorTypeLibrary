@@ -1,0 +1,17 @@
+package AppConcurrency
+public 
+annex EMV2 {**
+
+	error types
+
+	PhysioParamReadWriteRace : type extends ErrorLibrary::ReadWriteRace;
+	ControlActionReadWriteRace : type extends ErrorLibrary::ReadWriteRace;
+	PhysioParamWriteWriteRace : type extends ErrorLibrary::WriteWriteRace;
+	ControlActionWriteWriteRace : type extends ErrorLibrary::WriteWriteRace;
+	-- Ignore MutExErrors, I can't think of an app encountering these
+	
+	end types;
+
+**};
+
+end AppConcurrency;

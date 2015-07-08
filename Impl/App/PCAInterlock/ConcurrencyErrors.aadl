@@ -1,0 +1,25 @@
+package PCAInterlockConcurrency
+public 
+annex EMV2 {**
+
+	error types
+
+--	PhysioParamReadWriteRace : type extends ErrorLibrary::ReadWriteRace;
+--	ControlActionReadWriteRace : type extends ErrorLibrary::ReadWriteRace;
+--	PhysioParamWriteWriteRace : type extends ErrorLibrary::WriteWriteRace;
+--	ControlActionWriteWriteRace : type extends ErrorLibrary::WriteWriteRace;
+
+	SpO2ReadWriteRace : type extends AppConcurrency::PhysioParamReadWriteRace;
+	EtCO2ReadWriteRace : type extends AppConcurrency::PhysioParamReadWriteRace;
+	RRReadWriteRace : type extends AppConcurrency::PhysioParamReadWriteRace;
+	-- Ignore ControlActionReadWriteRace since pump shutoff commands are sent
+	--   by the same thread that determines the value
+	
+	-- Ignore WriteWriteRace errors since all values are only written to by
+	--   single threads 
+	
+	end types;
+
+**};
+
+end PCAInterlockConcurrency;

@@ -1,0 +1,25 @@
+package AppReplication
+public 
+annex EMV2 {**
+
+	error types
+
+	PhysioParamAssymetricTiming : type extends ErrorLibrary::AsymmetricTiming;
+	ControlActionAssymetricTiming : type extends ErrorLibrary::AsymmetricTiming;
+	PhysioParamAssymetricApproxValue : type extends ErrorLibrary::AsymmetricApproximateValue;
+	ControlActionAssymetricApproxValue : type extends ErrorLibrary::AsymmetricApproximateValue;
+	PhysioParamAssymetricExactValue : type extends ErrorLibrary::AsymmetricExactValue;
+	ControlActionAssymetricExactValue : type extends ErrorLibrary::AsymmetricExactValue;
+	PhysioParamAsymmetricItemOmission : type extends ErrorLibrary::AsymmetricItemOmission;
+	ControlActionAsymmetricItemOmission : type extends ErrorLibrary::AsymmetricItemOmission;
+	PhysioParamAsymmetricServiceOmission : type extends ErrorLibrary::AsymmetricServiceOmission;
+	ControlActionAsymmetricServiceOmission : type extends ErrorLibrary::AsymmetricServiceOmission;
+	
+	-- Ignore SymmetricReplicationErrors, since they are implied by the other
+	--   error types being used on a port with multiple subscribers
+	
+	end types;
+
+**};
+
+end AppReplication;
